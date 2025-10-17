@@ -7,6 +7,18 @@ public class PlayerInteraction : MonoBehaviour {
 
     private Interactable currentHighlighted; // Track the currently highlighted object
 
+    void Awake() {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        Debug.Log("Players " + players.Length);
+        if (players.Length > 1) {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject); // keep Player GameObject between scenes
+                                        // TODO (maybe): move this to a different Player script to seperate concerns with interactions
+    }
+    
     void Start() {
         playerCamera = Camera.main.transform;
     }
