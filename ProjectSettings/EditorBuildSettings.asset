@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MuseumScene.unity
     guid: d412486351f584704a78d6b23b6b843b
+  - enabled: 1
+    path: Assets/Scenes/BookstoreScene.unity
+    guid: ee8f4d1f8b853497c8237283bfa29fad
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
