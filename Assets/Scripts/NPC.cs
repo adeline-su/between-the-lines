@@ -68,5 +68,7 @@ public class NPC : Interactable
 
         GameManager.Instance.InspirationLevel += 1;
         Debug.Log("Updated the InspirationLevel to " + GameManager.Instance.InspirationLevel);
+
+        ConversationManager.OnConversationEnded -= ConversationEndedHandler;
     }
 }
