@@ -22,7 +22,6 @@ public class PlayerInteraction : MonoBehaviour {
     }
     
     void Start() {
-        Debug.Log(playerCam.Priority);
         playerCamera = Camera.main.transform;
     }
 

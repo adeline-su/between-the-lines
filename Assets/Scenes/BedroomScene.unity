@@ -855,6 +855,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: askldjf
   dialogueCamera: {fileID: 0}
+  firstConversation: {fileID: 0}
+  secondConversation: {fileID: 0}
 --- !u!4 &59749400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6158796845305306501, guid: 59e3ba88a16ef4271b647ff29eddaed5, type: 3}
@@ -13984,6 +13986,10 @@ PrefabInstance:
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_RootOrder
