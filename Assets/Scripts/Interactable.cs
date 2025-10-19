@@ -13,6 +13,8 @@ public class Interactable : MonoBehaviour
         rend = GetComponent<Renderer>(); // finds the GameObject’s Renderer
         skinnedRend = GetComponentInChildren<SkinnedMeshRenderer>();
 
+        Debug.Log("rend " + rend);
+        Debug.Log("skinnedRend " + skinnedRend);
     }
 
     public void Highlight(bool isActive)
@@ -35,6 +37,7 @@ public class Interactable : MonoBehaviour
         else {
             if (isActive) {
                 Debug.Log("Highlighted " + gameObject.name);
+                Debug.Log(rend);
                 rend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_LightLayer2;
             }
             else {

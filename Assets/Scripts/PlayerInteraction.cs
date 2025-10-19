@@ -1,10 +1,12 @@
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerInteraction : MonoBehaviour {
     public float interactDistance = 3f;
     public LayerMask interactableLayer;
-    private Transform playerCamera;
+    public CinemachineVirtualCamera playerCam;
 
+    private Transform playerCamera;
     private Interactable currentHighlighted; // Track the currently highlighted object
 
     void Awake() {
@@ -20,6 +22,7 @@ public class PlayerInteraction : MonoBehaviour {
     }
     
     void Start() {
+        Debug.Log(playerCam.Priority);
         playerCamera = Camera.main.transform;
     }
 
