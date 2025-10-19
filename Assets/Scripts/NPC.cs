@@ -32,7 +32,6 @@ public class NPC : Interactable
 
         if (firstMeeting) {
             StartConversation(firstConversation);
-            firstMeeting = false;
         } else {
             StartConversation(secondConversation);
         }
@@ -66,7 +65,10 @@ public class NPC : Interactable
         // make the NPC interactable again
         gameObject.layer = layerInteractable;
 
-        GameManager.Instance.InspirationLevel += 1;
+        if (firstMeeting) {
+            GameManager.Instance.InspirationLevel += 1;
+            firstMeeting = false;
+        }
         Debug.Log("Updated the InspirationLevel to " + GameManager.Instance.InspirationLevel);
 
         ConversationManager.OnConversationEnded -= ConversationEndedHandler;
