@@ -838,8 +838,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b34fd9b7cb454c4bbe81bf9994e0bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: MuseumScene
-  targetLocation: {fileID: 1316156979}
+  targetScene: BookstoreScene
+  targetLocation: {fileID: 1171004439}
 --- !u!4 &59749400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6158796845305306501, guid: 59e3ba88a16ef4271b647ff29eddaed5, type: 3}
@@ -2954,8 +2954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b34fd9b7cb454c4bbe81bf9994e0bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: BookstoreScene
-  targetLocation: {fileID: 1171004439}
+  targetScene: MuseumScene
+  targetLocation: {fileID: 1316156979}
 --- !u!64 &941615656
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -3,21 +3,43 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     private Renderer rend; // the GameObject’s Renderer component (responsible for drawing it).
+    private SkinnedMeshRenderer skinnedRend;
+
+    private uint renderingLayerMask_Default = 1u << 0;
+    private uint renderingLayerMask_LightLayer2 = 1u << 2;
 
     void Start()
     {
         rend = GetComponent<Renderer>(); // finds the GameObject’s Renderer
+        skinnedRend = GetComponentInChildren<SkinnedMeshRenderer>();
+
     }
 
     public void Highlight(bool isActive)
     {
-        if (isActive) {
-            Debug.Log("Highlighted " + gameObject.name);
-            rend.material.EnableKeyword("_EMISSION");
-            rend.material.SetColor("_EmissionColor", Color.yellow);
-        }
+        // for characters
+        if (skinnedRend != null) {
+            Debug.Log("rend.renderingLayerMask " + skinnedRend.renderingLayerMask);
+            if (isActive) {
+                Debug.Log("Highlighted " + gameObject.name);
+                // set Rendering Layer Mask to "Default" and "Light Layer 2" 
+                skinnedRend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_LightLayer2;
+            }
+            else {
+                // reset Rendering Layer Mask to "Default" 
+                skinnedRend.renderingLayerMask = renderingLayerMask_Default;
+            }
+        } 
+        
+        // for objects
         else {
-            rend.material.SetColor("_EmissionColor", Color.black);
+            if (isActive) {
+                Debug.Log("Highlighted " + gameObject.name);
+                rend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_LightLayer2;
+            }
+            else {
+                rend.renderingLayerMask = renderingLayerMask_Default;
+            }
         }
     }
 
