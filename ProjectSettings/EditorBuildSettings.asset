@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BookstoreScene.unity
     guid: ee8f4d1f8b853497c8237283bfa29fad
+  - enabled: 1
+    path: Assets/Scenes/CafeScene.unity
+    guid: a84254e585ad24eb9998e3701a170540
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
