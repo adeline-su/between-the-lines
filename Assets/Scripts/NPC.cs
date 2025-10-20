@@ -11,7 +11,7 @@ public class NPC : Interactable
     public NPCConversation secondConversation;
 
     private PlayerInput playerInput;
-    private bool firstMeeting = true;
+    // private bool firstMeeting = true;
     private int cameraPriorityHigh = 20;
     private int cameraPriorityLow = 5;
     private int layerDefault;
@@ -22,7 +22,7 @@ public class NPC : Interactable
         layerInteractable = LayerMask.NameToLayer("Interactable");
 
         // Find the PlayerInput component once the scene starts
-        playerInput = FindObjectOfType<PlayerInput>();
+        playerInput = FindFirstObjectByType<PlayerInput>();
     }
 
     public override void Interact()
@@ -30,7 +30,7 @@ public class NPC : Interactable
         base.Interact();
         Debug.Log("Interact - this NPC's name is " + Name);
 
-        if (firstMeeting) {
+        if (GameManager.Instance.isFirstTimeMeeting(gameObject)) {
             StartConversation(firstConversation);
         } else {
             StartConversation(secondConversation);
@@ -65,9 +65,10 @@ public class NPC : Interactable
         // make the NPC interactable again
         gameObject.layer = layerInteractable;
 
-        if (firstMeeting) {
+        if (GameManager.Instance.isFirstTimeMeeting(gameObject)) {
             GameManager.Instance.InspirationLevel += 1;
-            firstMeeting = false;
+            // firstMeeting = false;
+            GameManager.Instance.addToListOfPastConversations(gameObject);
         }
         Debug.Log("Updated the InspirationLevel to " + GameManager.Instance.InspirationLevel);
 

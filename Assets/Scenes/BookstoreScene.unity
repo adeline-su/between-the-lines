@@ -9030,10 +9030,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 4
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":111,"yPos":201},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"option
-    one","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":332,"yPos":201},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"option
-    two","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":573,"yPos":200},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"option
-    three","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":2},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":281,"yPos":61},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"hi!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"man","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":368,"yPos":406},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"option
+    one","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":589,"yPos":406},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"option
+    two","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":830,"yPos":405},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"option
+    three","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":2},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":538,"yPos":266},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"hi!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"man","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -22168,6 +22168,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1432938489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1318889675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1318889677}
+  - component: {fileID: 1318889676}
+  m_Layer: 0
+  m_Name: Dialogue_ChoiceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1318889676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318889675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4123ca2970ba4a6ab2d8ab1bc911b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1318889677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318889675}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2938828, y: 5.9029036, z: 0.62899315}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1327149596
 Mesh:
   m_ObjectHideFlags: 0
@@ -23509,6 +23553,10 @@ GameObject:
   - component: {fileID: 1530712062}
   - component: {fileID: 1530712061}
   - component: {fileID: 1530712060}
+  - component: {fileID: 1530712074}
+  - component: {fileID: 1530712073}
+  - component: {fileID: 1530712072}
+  - component: {fileID: 1530712071}
   m_Layer: 0
   m_Name: ConversationEventInfo
   m_TagString: Untagged
@@ -23906,7 +23954,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318889676}
+        m_TargetAssemblyTypeName: ChoiceHandler, Assembly-CSharp
+        m_MethodName: OnChoseCynicism
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   NodeID: 19
   TMPFont: {fileID: 11400000, guid: b1f3b7a549910461fa0735d3916fdc83, type: 2}
   Icon: {fileID: 0}
@@ -23925,7 +23985,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318889676}
+        m_TargetAssemblyTypeName: ChoiceHandler, Assembly-CSharp
+        m_MethodName: OnChoseCuriosity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   NodeID: 18
   TMPFont: {fileID: 11400000, guid: b1f3b7a549910461fa0735d3916fdc83, type: 2}
   Icon: {fileID: 0}
@@ -23944,7 +24016,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318889676}
+        m_TargetAssemblyTypeName: ChoiceHandler, Assembly-CSharp
+        m_MethodName: OnChoseSympathy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   NodeID: 17
   TMPFont: {fileID: 11400000, guid: b1f3b7a549910461fa0735d3916fdc83, type: 2}
   Icon: {fileID: 0}
@@ -24003,6 +24087,82 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 14
+  TMPFont: {fileID: 11400000, guid: b1f3b7a549910461fa0735d3916fdc83, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1530712071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530712044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 30
+  TMPFont: {fileID: 11400000, guid: b1f3b7a549910461fa0735d3916fdc83, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1530712072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530712044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 29
+  TMPFont: {fileID: 11400000, guid: b1f3b7a549910461fa0735d3916fdc83, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1530712073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530712044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 27
+  TMPFont: {fileID: 11400000, guid: b1f3b7a549910461fa0735d3916fdc83, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1530712074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530712044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 26
   TMPFont: {fileID: 11400000, guid: b1f3b7a549910461fa0735d3916fdc83, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
@@ -25688,46 +25848,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentIDCounter: 26
-  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":229,\"yPos\":-207},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I've
-    been so bored and uninspired.\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":542,\"yPos\":-206},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"My
-    brain is in a fog...\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":12}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":164,\"yPos\":136},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Something
-    adventurous!\",\"parentUIDs\":[5],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":382,\"yPos\":135},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"What's
-    your favourite?\",\"parentUIDs\":[5],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":605,\"yPos\":133},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"A
-    book should be a door, not a mirror.\\\"\",\"parentUIDs\":[5],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":14}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":366,\"yPos\":473},\"ID\":13,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Thanks!\",\"parentUIDs\":[9,11,12],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":16}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":362.5,\"yPos\":663},\"ID\":15,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Sure.\",\"parentUIDs\":[14],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":21}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":183.5,\"yPos\":869},\"ID\":17,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+empathy]\",\"parentUIDs\":[16],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":22}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":402.5,\"yPos\":869},\"ID\":18,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+curiosity]\",\"parentUIDs\":[16],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":23}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":636.5,\"yPos\":865},\"ID\":19,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+cynicism]\",\"parentUIDs\":[16],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":383.5,\"yPos\":1227},\"ID\":25,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Never
-    change, [Bookstore Man].\",\"parentUIDs\":[20],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":408,\"yPos\":-328},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hey,
+  CurrentIDCounter: 31
+  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":88.5,\"yPos\":-932},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I've
+    been so bored and uninspired.\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":401.5,\"yPos\":-931},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"My
+    brain is in a fog...\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":12}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":23.5,\"yPos\":-589},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Something
+    adventurous!\",\"parentUIDs\":[5],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":241.5,\"yPos\":-590},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"What's
+    your favourite?\",\"parentUIDs\":[5],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":464.5,\"yPos\":-592},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"A
+    book should be a door, not a mirror.\\\"\",\"parentUIDs\":[5],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":14}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":225.5,\"yPos\":-252},\"ID\":13,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Thanks!\",\"parentUIDs\":[9,11,12],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":26}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":222,\"yPos\":-62},\"ID\":15,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Sure.\",\"parentUIDs\":[14],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":21}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":42,\"yPos\":144},\"ID\":17,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+sympathy]
+    You\u2019ve built something special here.\",\"parentUIDs\":[16],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":22}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":262,\"yPos\":144},\"ID\":18,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+curiosity]
+    Well, what do you think has changed? I wonder if there's another way...\",\"parentUIDs\":[16],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":23}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":496,\"yPos\":141},\"ID\":19,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+cynicism]
+    Sometimes it\u2019s better to let things go before they fade completely.\",\"parentUIDs\":[16],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":235,\"yPos\":642},\"ID\":25,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Never
+    change, [Bookstore Man].\",\"parentUIDs\":[20],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":267.5,\"yPos\":-1053},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hey,
     haven't seen you in a while! \",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":227,\"yPos\":-122},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"All
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":86.5,\"yPos\":-847},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"All
     we have to decide is what to do with the time that is given us.\u201D That's
     Tolkien.\",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":534.5,\"yPos\":-126},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u201CWhat
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":394,\"yPos\":-851},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\u201CWhat
     does the brain matter compared with the heart?\u201D That's Virginia Woolf.\",\"parentUIDs\":[2],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":376.5,\"yPos\":8},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Sorry,
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":236,\"yPos\":-717},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Sorry,
     I tend to speak in quotes. I guess that's what happens when you have books for
     friends... Well, what kind of book are you looking for today?\",\"parentUIDs\":[3,4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":605,\"yPos\":218},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Woah,
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":464.5,\"yPos\":-507},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Woah,
     you're better at this than I am. I'm guessing something transformative then.
     It's different for everyone. For me, that book was The Goldfinch by Donna Tartt.\",\"parentUIDs\":[8],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":384,\"yPos\":215},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hard
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":243.5,\"yPos\":-510},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hard
     question. Hmm...\",\"parentUIDs\":[7],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":386,\"yPos\":343},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I'd
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":245.5,\"yPos\":-382},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I'd
     say East of Eden by John Steinbeck.\",\"parentUIDs\":[10],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":155,\"yPos\":217},\"ID\":12,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Knowing
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":14.5,\"yPos\":-508},\"ID\":12,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Knowing
     you, that means all things sci-fi. Go for The Three Body Problem by Cixin Liu.\",\"parentUIDs\":[6],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":15}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":362,\"yPos\":554},\"ID\":14,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Before
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":15}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":221.5,\"yPos\":-171},\"ID\":14,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Before
     you go, can I go out on a limb and ask for some advice? I don't know why, but
     our meeting feels serendipitous.\",\"parentUIDs\":[13],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":17},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":18},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":19}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":366.5,\"yPos\":749},\"ID\":16,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
-    feel like I'm at a crossroads. I created The Willow & Word at a time in my life
-    when I was so disillusioned by my old life. But recently, I've really been struggling
-    to keep this place afloat.\",\"parentUIDs\":[15],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":25}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":377.5,\"yPos\":1118},\"ID\":20,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"It
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":17},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":18},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":19}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":226,\"yPos\":23},\"ID\":16,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+    created The Willow & Word at a time in my life when I was so disillusioned by
+    my old life. But recently, I've really been struggling to keep this place afloat.\",\"parentUIDs\":[26],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":25}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":235,\"yPos\":518},\"ID\":20,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"It
     was literature in its finest sense, since it made Unk courageous, watchful, and
-    secretly free.\\\" Kurt Vonnegut.\",\"parentUIDs\":[21,22,23],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
-    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":178.5,\"yPos\":978},\"ID\":21,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+empathy
-    aside]\",\"parentUIDs\":[17],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[AI]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":394.5,\"yPos\":979},\"ID\":22,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+curiosity
-    aside]\",\"parentUIDs\":[18],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[AI]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":640.5,\"yPos\":975},\"ID\":23,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+cynicism
-    aside]\",\"parentUIDs\":[19],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[AI]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0}]}"
+    secretly free.\\\" Kurt Vonnegut.\",\"parentUIDs\":[27,29,30],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":27}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":38,\"yPos\":253},\"ID\":21,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+sympath
+    aside] Maybe it's not about money. \",\"parentUIDs\":[17],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[AI]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":29}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":254,\"yPos\":253},\"ID\":22,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+curiosity
+    aside] That's right. Keep an open mind. What about hosting readings? Art nights?
+    Or a cafe corner?\",\"parentUIDs\":[18],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[AI]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":30}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":500,\"yPos\":250},\"ID\":23,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[+cynicism
+    aside] Maybe it's already over. \",\"parentUIDs\":[19],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[AI]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":16}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":461.5,\"yPos\":-27},\"ID\":26,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+    feel like I'm at a crossroad.\",\"parentUIDs\":[15],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":45,\"yPos\":382},\"ID\":27,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"True.
+    It's about the people who still call these shelves home.\",\"parentUIDs\":[21],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
+    Man] \",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":258,\"yPos\":382},\"ID\":29,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Good
+    idea! Sofia runs the local cafe... Time to call an old friend.\",\"parentUIDs\":[22],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":501,\"yPos\":391},\"ID\":30,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Some
+    things just aren't meant to be. Onto the next journey.\",\"parentUIDs\":[23],\"AdvanceDialogueAutomatically\":true,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"[Bookstore
+    Man]\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0.1,\"Volume\":0}]}"
   saveVersion: 110
   DefaultName: '[Bookstore Man]'
   DefaultSprite: {fileID: 0}
@@ -25758,11 +25929,27 @@ MonoBehaviour:
   - {fileID: 1530712062}
   - {fileID: 1530712061}
   - {fileID: 1530712060}
+  - {fileID: 1530712074}
+  - {fileID: 1530712073}
+  - {fileID: 1530712072}
+  - {fileID: 1530712071}
   ContinueFont: {fileID: 11400000, guid: b1f3b7a549910461fa0735d3916fdc83, type: 2}
   EndConversationFont: {fileID: 11400000, guid: b1f3b7a549910461fa0735d3916fdc83, type: 2}
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318889676}
+        m_TargetAssemblyTypeName: ChoiceHandler, Assembly-CSharp
+        m_MethodName: OnChoseCynicism
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1765059069
 Transform:
   m_ObjectHideFlags: 0
@@ -31784,3 +31971,4 @@ SceneRoots:
   - {fileID: 531950471}
   - {fileID: 1765059069}
   - {fileID: 714269579}
+  - {fileID: 1318889677}

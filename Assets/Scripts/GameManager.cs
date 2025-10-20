@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -6,10 +7,14 @@ public class GameManager : MonoBehaviour
 
     public int InspirationLevel;
 
+    private int CuriosityLevel = 0;
+    private int SympathyLevel = 0;
+    private int CynicismLevel = 0;
+
+    List<string> pastConversations = new List<string>();
+
+
     private void Awake() {
-        Debug.Log("GameManager says that the InspirationLevel is " + Instance?.InspirationLevel);
-
-
         if (Instance != null) { // make sure there is only one GameManager at all times
             Destroy(gameObject);
             return;
@@ -19,4 +24,55 @@ public class GameManager : MonoBehaviour
         InspirationLevel = 0;
         DontDestroyOnLoad(gameObject);
     }
+
+    public void IncCuriosity() {
+        CuriosityLevel += 1;
+        Debug.Log("CuriosityLevel " + CuriosityLevel);
+    }
+
+    public void IncSympathy() {
+        SympathyLevel += 1;
+        Debug.Log("SympathyLevel " + SympathyLevel);
+    }
+
+    public void IncCynicism() {
+        CynicismLevel += 1;
+        Debug.Log("CynicismLevel " + CynicismLevel);
+    }
+
+    public int getCuriosityLevel() {
+        return CuriosityLevel;
+    }
+
+    public int getSympathyLevel() {
+        return SympathyLevel;
+    }
+
+    public int getCynicismLevel() {
+        return CynicismLevel;
+    }
+
+    public void DebugGameState() {
+        Debug.Log("(1/2) GameManager says that the InspirationLevel is " + Instance?.InspirationLevel
+            + " and (Curiosity, Sympathy, Cynicism) is " + CuriosityLevel + " " + SympathyLevel + " " + CynicismLevel);
+
+        Debug.Log("(2/2) GameManager says that the list of pastConversations is " + pastConversations);
+    }
+
+    public bool isFirstTimeMeeting(GameObject npc) {
+        Debug.Log("Checking if " + npc.name + " is a member of " + pastConversations);
+        if (pastConversations.Contains(npc.name)) {
+            Debug.Log("False - not first time meeting " + npc.name);
+            return false;
+        } else {
+            Debug.Log("True - first time meeting " + npc.name);
+            return true;
+        }
+    }
+
+    public void addToListOfPastConversations(GameObject npc) {
+        Debug.Log("Adding " + npc.name + " to list of pastConversations " + pastConversations);
+        pastConversations.Add(npc.name);
+    }
+
 }
