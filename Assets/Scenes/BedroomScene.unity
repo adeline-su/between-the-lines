@@ -1209,6 +1209,7 @@ MonoBehaviour:
   dialogueCamera: {fileID: 0}
   firstConversation: {fileID: 0}
   secondConversation: {fileID: 0}
+  speakingAudio: {fileID: 0}
 --- !u!4 &59749400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6158796845305306501, guid: 59e3ba88a16ef4271b647ff29eddaed5, type: 3}
@@ -3393,6 +3394,7 @@ MonoBehaviour:
   dialogueCamera: {fileID: 0}
   firstConversation: {fileID: 0}
   secondConversation: {fileID: 0}
+  speakingAudio: {fileID: 0}
 --- !u!114 &257203001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20632,6 +20634,10 @@ PrefabInstance:
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9005220659476430820, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: orthographic

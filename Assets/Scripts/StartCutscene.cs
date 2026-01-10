@@ -14,8 +14,16 @@ public class StartCutscene : MonoBehaviour
     public float secondJournalDuration;
     public float timeSecondJournalAppears;
 
+    private bool TESTING_skipStartCutscene = true;
+
     void Start()
     {
+        if (TESTING_skipStartCutscene) {
+            delayBeforeFirstJournal = 0.5f;
+            firstJournalDuration = 0.5f;
+            secondJournalDuration = 0.5f;
+            timeSecondJournalAppears = 2f;
+        }
         // Always ensure journals are hidden initially
         if (journalFirst) journalFirst.SetActive(false);
         if (journalSecond) journalSecond.SetActive(false);
@@ -38,6 +46,8 @@ public class StartCutscene : MonoBehaviour
 
     IEnumerator RunCutscene()
     {
+        // if (TESTING_skipStartCutscene) yield break;
+
         // wait, then show first journal
         yield return new WaitForSeconds(delayBeforeFirstJournal);
         if (journalFirst) journalFirst.SetActive(true);
