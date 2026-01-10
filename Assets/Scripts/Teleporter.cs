@@ -24,6 +24,7 @@ public class Teleporter : Interactable
             cc.enabled = true;
 
             Debug.Log("Teleported to " + player.transform.position);
+            GameManager.Instance.OnSceneLoaded(targetScene);
         }
         if (!string.IsNullOrEmpty(targetScene)) { // change scene
             SceneManager.LoadScene(targetScene);

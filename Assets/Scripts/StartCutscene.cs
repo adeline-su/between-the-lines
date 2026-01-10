@@ -5,8 +5,8 @@ public class StartCutscene : MonoBehaviour
 {
     [Header("References")]
     public GameObject player;
-    public GameObject journalDeskUI;   // first journal UI
-    public GameObject journalRoomUI;   // second journal UI
+    public GameObject journalFirst;   // first journal UI
+    public GameObject journalSecond;   // second journal UI
 
     [Header("Timing (seconds)")]
     public float delayBeforeFirstJournal;
@@ -16,10 +16,21 @@ public class StartCutscene : MonoBehaviour
 
     void Start()
     {
-        if (journalDeskUI) journalDeskUI.SetActive(false);
-        if (journalRoomUI) journalRoomUI.SetActive(false);
-        if (player) player.SetActive(false);
+        // Always ensure journals are hidden initially
+        if (journalFirst) journalFirst.SetActive(false);
+        if (journalSecond) journalSecond.SetActive(false);
 
+        // Check if this is the first time playing
+        if (GameManager.Instance != null && GameManager.Instance.InspirationLevel > 0)
+        {
+            // Not first time - skip cutscene, make sure player is active
+            if (player) player.SetActive(true);
+            gameObject.SetActive(false);
+            return;
+        }
+
+        // First time - play the cutscene
+        if (player) player.SetActive(false);
         gameObject.SetActive(true);
 
         StartCoroutine(RunCutscene());
@@ -29,10 +40,10 @@ public class StartCutscene : MonoBehaviour
     {
         // wait, then show first journal
         yield return new WaitForSeconds(delayBeforeFirstJournal);
-        if (journalDeskUI) journalDeskUI.SetActive(true);
+        if (journalFirst) journalFirst.SetActive(true);
 
         yield return new WaitForSeconds(firstJournalDuration);
-        if (journalDeskUI) journalDeskUI.SetActive(false);
+        if (journalFirst) journalFirst.SetActive(false);
 
         // wait until it's time for the second journal
         float elapsedSoFar = delayBeforeFirstJournal + firstJournalDuration;
@@ -40,10 +51,10 @@ public class StartCutscene : MonoBehaviour
         if (waitUntilSecond > 0f) yield return new WaitForSeconds(waitUntilSecond);
 
         // show second journal
-        if (journalRoomUI) journalRoomUI.SetActive(true);
+        if (journalSecond) journalSecond.SetActive(true);
 
         yield return new WaitForSeconds(secondJournalDuration);
-        if (journalRoomUI) journalRoomUI.SetActive(false);
+        if (journalSecond) journalSecond.SetActive(false);
 
         // end cutscene
         if (player) player.SetActive(true);
