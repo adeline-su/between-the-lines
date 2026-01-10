@@ -29,8 +29,10 @@ public class StartCutscene : MonoBehaviour
         if (journalSecond) journalSecond.SetActive(false);
 
         // Check if this is the first time playing
-        if (GameManager.Instance != null && GameManager.Instance.InspirationLevel > 0)
-        {
+        if ((GameManager.Instance != null 
+            && GameManager.Instance.InspirationLevel > 0 )
+            || GameManager.Instance.hasVisitedAtLeastOneLocation
+        ) {
             // Not first time - skip cutscene, make sure player is active
             if (player) player.SetActive(true);
             gameObject.SetActive(false);

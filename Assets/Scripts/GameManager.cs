@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     private bool hasTriggeredEndCutscene = false;
 
+    public bool hasVisitedAtLeastOneLocation = false;
+
     private void Awake() {
         if (Instance != null) { // make sure there is only one GameManager at all times
             Destroy(gameObject);

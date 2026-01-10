@@ -25,6 +25,7 @@ public class Teleporter : Interactable
 
             Debug.Log("Teleported to " + player.transform.position);
             GameManager.Instance.OnSceneLoaded(targetScene);
+            GameManager.Instance.hasVisitedAtLeastOneLocation = true;
         }
         if (!string.IsNullOrEmpty(targetScene)) { // change scene
             SceneManager.LoadScene(targetScene);
