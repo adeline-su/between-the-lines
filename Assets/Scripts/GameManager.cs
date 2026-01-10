@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public int InspirationLevel;
-    // public TwoJournalCutscene endCutscene;
 
     private int CuriosityLevel = 0;
     private int SympathyLevel = 0;
@@ -26,19 +25,15 @@ public class GameManager : MonoBehaviour
         Instance = this;
         InspirationLevel = 0;
         DontDestroyOnLoad(gameObject);
-
-        // SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
-    // private void OnDestroy() {
-    //     SceneManager.sceneLoaded -= OnSceneLoaded;
-    // }
 
     public void OnSceneLoaded(string sceneName) {
         Debug.Log("game manager - OnSceneLoaded");
         bool finishedGame = (CuriosityLevel + SympathyLevel + CynicismLevel) == 3;
-        if (sceneName == "BedroomScene" && CuriosityLevel == 1 && !hasTriggeredEndCutscene) {
+
+        // TODO: uncomment this out later
         // if (scene.name == "BedroomScene" && finishedGame && !hasTriggeredEndCutscene) {
+        if (sceneName == "BedroomScene" && CuriosityLevel == 1 && !hasTriggeredEndCutscene) {
             Debug.Log("Returned to bedroom, triggering end cutscene");
             hasTriggeredEndCutscene = true;
             StartCoroutine(TriggerEndCutsceneDelayed());
@@ -46,14 +41,10 @@ public class GameManager : MonoBehaviour
     }
 
     System.Collections.IEnumerator TriggerEndCutsceneDelayed() {
-        // Wait a frame for the scene to fully load
-        yield return null;
+        yield return null; // wait a frame 
 
-        // Find the cutscene - use includeInactive to find even disabled objects
         TwoJournalCutscene cutscene = FindObjectOfType<TwoJournalCutscene>(true);
         if (cutscene != null) {
-            Debug.Log("Found EndCutscene, activating and playing it now");
-            // Activate the GameObject so it can run coroutines
             cutscene.gameObject.SetActive(true);
             cutscene.Play();
         } else {
