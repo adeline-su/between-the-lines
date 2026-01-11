@@ -7,6 +7,8 @@ public class Interactable : MonoBehaviour
 
     private uint renderingLayerMask_Default = 1u << 0;
     private uint renderingLayerMask_LightLayer2 = 1u << 2;
+    private uint renderingLayerMask_LightLayer3 = 1u << 3;
+    private uint renderingLayerMask_Highlight;
 
     protected virtual void Start()
     {
@@ -16,6 +18,12 @@ public class Interactable : MonoBehaviour
         Debug.Log("start: interactable " + gameObject.name);
         Debug.Log("rend " + rend);
         Debug.Log("skinnedRend " + skinnedRend);
+        
+        if (this is GrabbableItem grabbableItem) { // grabbable items should be highlighted in green
+            renderingLayerMask_Highlight = renderingLayerMask_LightLayer3;
+        } else {
+            renderingLayerMask_Highlight = renderingLayerMask_LightLayer2;
+        }
     }
 
     public void Highlight(bool isActive)
@@ -28,7 +36,7 @@ public class Interactable : MonoBehaviour
 
             if (isActive) {
                 Debug.Log("Highlighted " + gameObject.name);
-                rend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_LightLayer2;
+                rend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_Highlight;
             }
             else {
                 rend.renderingLayerMask = renderingLayerMask_Default;
@@ -39,7 +47,7 @@ public class Interactable : MonoBehaviour
             Debug.Log("Interactable - Highlight for CHARACTERS " + gameObject.name);
             if (isActive) {
                 Debug.Log("Highlighted " + gameObject.name);
-                skinnedRend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_LightLayer2;
+                skinnedRend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_Highlight;
             }
             else {
                 skinnedRend.renderingLayerMask = renderingLayerMask_Default;

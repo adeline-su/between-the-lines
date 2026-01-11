@@ -10,11 +10,14 @@ public class Teleporter : Interactable
 
     public override void Interact()
     {
+        // don't let the players interact with Teleporters until they have had
+        // their first conversation with the MC
         if (!GameManager.Instance.hasMetMC) return;
         base.Interact();
         Debug.Log("Interact - Teleporter");
 
-        if (targetLocation != null) { // change location within the current scene, to desired position in the target scene
+        // change location within the current scene, to desired position in the target scene
+        if (targetLocation != null) { 
             Debug.Log("Teleporting!");
             GameObject player = GameObject.FindWithTag("Player");
             CharacterController cc = player.GetComponent<CharacterController>();
@@ -28,7 +31,9 @@ public class Teleporter : Interactable
             GameManager.Instance.OnSceneLoaded(targetScene);
             GameManager.Instance.hasVisitedAtLeastOneLocation = true;
         }
-        if (!string.IsNullOrEmpty(targetScene)) { // change scene
+
+        // change scene
+        if (!string.IsNullOrEmpty(targetScene)) { 
             SceneManager.LoadScene(targetScene);
         }
     }

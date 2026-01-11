@@ -9,6 +9,7 @@ public class NPC : Interactable
     public CinemachineVirtualCamera dialogueCamera;
     public NPCConversation firstConversation;
     public NPCConversation secondConversation;
+    public GameObject objectToShowOnEndConversation;
 
     private PlayerInput playerInput;
     // private bool firstMeeting = true;
@@ -91,6 +92,8 @@ public class NPC : Interactable
             GameManager.Instance.InspirationLevel += 1;
             // firstMeeting = false;
             GameManager.Instance.addToListOfPastConversations(gameObject);
+
+            if (objectToShowOnEndConversation != null) objectToShowOnEndConversation.SetActive(true);
         }
         Debug.Log("Updated the InspirationLevel to " + GameManager.Instance.InspirationLevel);
 
