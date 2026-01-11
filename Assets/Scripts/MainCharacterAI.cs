@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using DialogueEditor;
 
 public class MainCharacterAI : Interactable
 {
-    public Transform player;
+    private Transform player;
     public Transform[] patrolPoints;
     public NavMeshAgent agent;
     public Animator animator;
@@ -16,6 +17,10 @@ public class MainCharacterAI : Interactable
     public NPCConversation firstConversation;
     public NPCConversation secondConversation;
     public AudioSource speakingAudio;
+
+    [Header("Footsteps")]
+    public AudioClip[] footstepClips;
+    public AudioSource footstepAudio;
 
     private int currentPointIndex = 0;
     private bool isWaiting = false;
@@ -72,7 +77,7 @@ public class MainCharacterAI : Interactable
         }
         else
         {
-            Debug.Log("MC is patrolling");
+            Debug.Log("MC is patrolling. current currentPointIndex is " + currentPointIndex);
 
             // patrol
             if (!agent.pathPending && agent.remainingDistance < 0.5f && !isWaiting)
@@ -86,12 +91,12 @@ public class MainCharacterAI : Interactable
         animator.SetFloat("MotionSpeed", 1f);
     }
 
-    public void OnBeginFollow()
+    public void OnBeginFollowPlayer()
     {
         followPlayer = true;
     }
 
-    public void OnEndFollow()
+    public void OnEndFollowPlayer()
     {
         followPlayer = false;
         agent.SetDestination(patrolPoints[currentPointIndex].position);
@@ -99,6 +104,7 @@ public class MainCharacterAI : Interactable
 
     public override void Interact()
     {
+        if (SceneManager.GetActiveScene().name != "BedroomScene") return;
         base.Interact();
 
         Debug.Log("Interacting with the MC");
@@ -154,6 +160,7 @@ public class MainCharacterAI : Interactable
         if (GameManager.Instance.isFirstTimeMeeting(gameObject))
         {
             GameManager.Instance.addToListOfPastConversations(gameObject);
+            GameManager.Instance.hasMetMC = true;
         }
 
         // Resume patrolling
@@ -170,6 +177,7 @@ public class MainCharacterAI : Interactable
         agent.velocity = Vector3.zero;
 
         // idle at each patrol point
+        Debug.Log("MC is idling. currentPointIndex is " + currentPointIndex);
         yield return new WaitForSeconds(idleDuration);
 
         agent.isStopped = false;
@@ -186,5 +194,14 @@ public class MainCharacterAI : Interactable
         agent.SetDestination(patrolPoints[currentPointIndex].position);
         isWaiting = false;
     }
+
+    public void OnFootstep()
+    {
+        if (footstepAudio == null || footstepClips == null || footstepClips.Length == 0) return;
+
+        AudioClip clip = footstepClips[Random.Range(0, footstepClips.Length)];
+        footstepAudio.PlayOneShot(clip, 0.2f);
+    }
+
 }
 

@@ -13,13 +13,16 @@ public class Interactable : MonoBehaviour
         rend = GetComponent<Renderer>(); // finds the GameObject’s Renderer
         skinnedRend = GetComponentInChildren<SkinnedMeshRenderer>();
 
+        Debug.Log("start: interactable " + gameObject.name);
         Debug.Log("rend " + rend);
         Debug.Log("skinnedRend " + skinnedRend);
     }
 
     public void Highlight(bool isActive)
     {
+        if ((gameObject.name != "MC") && !GameManager.Instance.hasMetMC) return;
         // for objects with a Renderer on this GameObject
+        Debug.Log("trying to Highlight " + gameObject.name);
         if (rend != null) {
             Debug.Log("Interactable - Highlight for OBJECTS " + gameObject.name);
 

@@ -10,6 +10,7 @@ public class Teleporter : Interactable
 
     public override void Interact()
     {
+        if (!GameManager.Instance.hasMetMC) return;
         base.Interact();
         Debug.Log("Interact - Teleporter");
 

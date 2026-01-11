@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
 
     private bool hasTriggeredEndCutscene = false;
 
+    // public flags
     public bool hasVisitedAtLeastOneLocation = false;
+    public bool hasMetMC = false;
 
     private void Awake() {
         if (Instance != null) { // make sure there is only one GameManager at all times

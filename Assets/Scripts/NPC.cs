@@ -19,12 +19,15 @@ public class NPC : Interactable
 
     public AudioSource speakingAudio;
 
+    private MainCharacterAI mainCharacter;
+
     void Awake() {
         layerDefault = LayerMask.NameToLayer("Default");
         layerInteractable = LayerMask.NameToLayer("Interactable");
 
         // Find the PlayerInput component once the scene starts
         playerInput = FindFirstObjectByType<PlayerInput>();
+        mainCharacter = FindFirstObjectByType<MainCharacterAI>();
 
         if (speakingAudio != null)
             speakingAudio.Stop();
@@ -63,6 +66,10 @@ public class NPC : Interactable
             Debug.LogWarning("speakingAudio is null for " + Name + "! Assign an AudioSource in the Inspector.");
         }
 
+        // Make MC follow the player during conversation
+        if (mainCharacter != null)
+            mainCharacter.OnBeginFollowPlayer();
+
         ConversationManager.Instance.StartConversation(conversation);
         ConversationManager.OnConversationEnded += ConversationEndedHandler;
     }
@@ -86,6 +93,10 @@ public class NPC : Interactable
             GameManager.Instance.addToListOfPastConversations(gameObject);
         }
         Debug.Log("Updated the InspirationLevel to " + GameManager.Instance.InspirationLevel);
+
+        // Stop MC from following the player
+        if (mainCharacter != null)
+            mainCharacter.OnEndFollowPlayer();
 
         ConversationManager.OnConversationEnded -= ConversationEndedHandler;
     }
