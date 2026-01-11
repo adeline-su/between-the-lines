@@ -85,11 +85,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("(1/2) GameManager says that the InspirationLevel is " + Instance?.InspirationLevel
             + " and (Curiosity, Sympathy, Cynicism) is " + CuriosityLevel + " " + SympathyLevel + " " + CynicismLevel);
 
-        Debug.Log("(2/2) GameManager says that the list of pastConversations is " + pastConversations);
+        Debug.Log("(2/2) GameManager says that the list of pastConversations is " + string.Join(", ", pastConversations));
     }
 
     public bool isFirstTimeMeeting(GameObject npc) {
-        Debug.Log("Checking if " + npc.name + " is a member of " + pastConversations);
+        Debug.Log("Checking if " + npc.name + " is a member of " + string.Join(", ", pastConversations));
         if (pastConversations.Contains(npc.name)) {
             Debug.Log("False - not first time meeting " + npc.name);
             return false;
@@ -100,8 +100,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void addToListOfPastConversations(GameObject npc) {
-        Debug.Log("Adding " + npc.name + " to list of pastConversations " + pastConversations);
         pastConversations.Add(npc.name);
+        Debug.Log("Added " + npc.name + " to list of pastConversations: " + string.Join(", ", pastConversations));
     }
 
 }

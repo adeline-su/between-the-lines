@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
     private uint renderingLayerMask_Default = 1u << 0;
     private uint renderingLayerMask_LightLayer2 = 1u << 2;
 
-    void Start()
+    protected virtual void Start()
     {
         rend = GetComponent<Renderer>(); // finds the GameObject’s Renderer
         skinnedRend = GetComponentInChildren<SkinnedMeshRenderer>();
@@ -19,29 +19,27 @@ public class Interactable : MonoBehaviour
 
     public void Highlight(bool isActive)
     {
-        // for characters
-        if (skinnedRend != null) {
-            Debug.Log("rend.renderingLayerMask " + skinnedRend.renderingLayerMask);
+        // for objects with a Renderer on this GameObject
+        if (rend != null) {
+            Debug.Log("Interactable - Highlight for OBJECTS " + gameObject.name);
+
             if (isActive) {
                 Debug.Log("Highlighted " + gameObject.name);
-                // set Rendering Layer Mask to "Default" and "Light Layer 2" 
-                skinnedRend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_LightLayer2;
-            }
-            else {
-                // reset Rendering Layer Mask to "Default" 
-                skinnedRend.renderingLayerMask = renderingLayerMask_Default;
-            }
-        } 
-        
-        // for objects
-        else {
-            if (isActive) {
-                Debug.Log("Highlighted " + gameObject.name);
-                Debug.Log(rend);
                 rend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_LightLayer2;
             }
             else {
                 rend.renderingLayerMask = renderingLayerMask_Default;
+            }
+        }
+        // for characters with SkinnedMeshRenderer on a child
+        else if (skinnedRend != null) {
+            Debug.Log("Interactable - Highlight for CHARACTERS " + gameObject.name);
+            if (isActive) {
+                Debug.Log("Highlighted " + gameObject.name);
+                skinnedRend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_LightLayer2;
+            }
+            else {
+                skinnedRend.renderingLayerMask = renderingLayerMask_Default;
             }
         }
     }
