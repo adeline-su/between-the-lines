@@ -98,39 +98,39 @@ public class GrabbableItem : Interactable
             col.enabled = false;
         }
 
-        Debug.Log($"Grabbed {gameObject.name}");
+        GameManager.Instance.currentlyHeldItem = gameObject;
+        Debug.Log($"Grabbed {gameObject.name}, the currently held item is {GameManager.Instance.currentlyHeldItem}");
     }
 
-    private void Release()
+    public void Release()
     {
-        Debug.Log("Releasing " + gameObject.name);
         
-        // isGrabbed = false;
+        isGrabbed = false;
 
-        // // Unparent from hold point
-        // transform.SetParent(null);
+        // Unparent from hold point
+        transform.SetParent(null);
 
-        // // Restore physics
-        // if (rb != null)
-        // {
-        //     rb.isKinematic = false;
-        //     rb.useGravity = originalUseGravity;
-        //     rb.linearDamping = originalDrag;
-        //     rb.angularDamping = originalAngularDrag;
-        //     rb.constraints = originalConstraints;
-        // }
+        // Restore physics
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            rb.useGravity = originalUseGravity;
+            rb.linearDamping = originalDrag;
+            rb.angularDamping = originalAngularDrag;
+            rb.constraints = originalConstraints;
+        }
 
-        // // Re-enable collision
-        // if (col != null)
-        // {
-        //     col.enabled = true;
-        // }
+        // Re-enable collision
+        if (col != null)
+        {
+            col.enabled = true;
+        }
 
-        // Debug.Log($"Released {gameObject.name}");
+        Debug.Log($"Released {gameObject.name}");
     }
 
-    public bool IsGrabbed()
-    {
-        return isGrabbed;
-    }
+    // public bool IsGrabbed()
+    // {
+    //     return isGrabbed;
+    // }
 }

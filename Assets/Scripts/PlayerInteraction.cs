@@ -2,37 +2,41 @@ using UnityEngine;
 using Cinemachine;
 
 public class PlayerInteraction : MonoBehaviour {
+    public static PlayerInteraction Instance;
+
     public float interactDistance = 3f;
     public LayerMask interactableLayer;
     public CinemachineVirtualCamera playerCam;
 
     private Transform playerCamera;
-    private Interactable currentHighlighted; // Track the currently highlighted object
+    public Interactable currentHighlighted;
 
     void Awake() {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        Debug.Log("Players " + players.Length);
-        if (players.Length > 1) {
+        if (Instance != null && Instance != this) {
             Destroy(gameObject);
             return;
         }
 
-        DontDestroyOnLoad(gameObject); // keep Player GameObject between scenes
-                                        // TODO (maybe): move this to a different Player script to seperate concerns with interactions
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
-    
+
     void Start() {
         playerCamera = Camera.main.transform;
     }
 
     void Update() {
+        bool hitInteractable = false;
+
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
-        // Perform raycast only on interactable layer
         if (Physics.Raycast(ray, out hit, interactDistance, interactableLayer)) {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
+
             if (interactable != null) {
+                hitInteractable = true;
+
                 if (currentHighlighted != interactable) {
                     if (currentHighlighted != null)
                         currentHighlighted.Highlight(false);
@@ -41,17 +45,19 @@ public class PlayerInteraction : MonoBehaviour {
                     currentHighlighted.Highlight(true);
                 }
 
-                // Interact when pressing E
                 if (Input.GetKeyDown(KeyCode.E)) {
                     currentHighlighted.Interact();
                 }
             }
-            else {
-                ClearHighlight(); // Hit something on the layer, but it's not interactable
-            }
         }
-        else {
-            ClearHighlight(); // Hit nothing
+
+        // If no interactable detected
+        if (!hitInteractable) {
+            ClearHighlight();
+
+            if (Input.GetKeyDown(KeyCode.E)) {
+                OnEmptyInteract();   // Call whatever you want here
+            }
         }
     }
 
@@ -59,6 +65,22 @@ public class PlayerInteraction : MonoBehaviour {
         if (currentHighlighted != null) {
             currentHighlighted.Highlight(false);
             currentHighlighted = null;
+        }
+    }
+
+    private void OnEmptyInteract() {
+        Debug.Log("Pressed E with no interactable!");
+        GrabbableItem item = GameManager.Instance.currentlyHeldItem.GetComponent<GrabbableItem>();
+        
+        if (currentHighlighted is Interactable) {
+            Debug.Log("Interact will not release " + gameObject.name + 
+                " because player is looking at another interactable object, " + PlayerInteraction.Instance.currentHighlighted.name);
+        } else if (item == null) {
+            Debug.Log("Trying to release a non-grabbable item " + GameManager.Instance.currentlyHeldItem.name);
+        } else {
+            Debug.Log("Releasing " + gameObject.name);
+            GameManager.Instance.currentlyHeldItem = null;
+            item.Release();
         }
     }
 }

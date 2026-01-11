@@ -7563,7 +7563,6 @@ Transform:
   - {fileID: 1295578146}
   - {fileID: 1953946274}
   - {fileID: 1589515334}
-  - {fileID: 856024699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &50526945
@@ -40568,9 +40567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 4
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":-0.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Thanks
-    for your advice!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"[Bookstore
-    Man]","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":122.25,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Thanks
+    for your advice!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"David","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -47919,7 +47917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &856024699
 Transform:
   m_ObjectHideFlags: 0
@@ -47929,12 +47927,12 @@ Transform:
   m_GameObject: {fileID: 856024698}
   serializedVersion: 2
   m_LocalRotation: {x: 0.66861105, y: 0.230129, z: -0.23012896, w: 0.668611}
-  m_LocalPosition: {x: -0.5796, y: 0.0075001717, z: -0.3037001}
-  m_LocalScale: {x: 0.21, y: 0.32371122, z: 0.045620143}
+  m_LocalPosition: {x: 1.7803999, y: 5.9895, z: 0.5062999}
+  m_LocalScale: {x: 0.21, y: 0.32371128, z: 0.04562015}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 715894918}
-  m_Father: {fileID: 49451368}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -37.986}
 --- !u!114 &856024700
 MonoBehaviour:
@@ -103967,6 +103965,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[4]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3609491102241362320, guid: a69543aac2ec642b592eb97883e5ab45, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6336220613710666087, guid: a69543aac2ec642b592eb97883e5ab45, type: 3}
       propertyPath: m_Name
       value: MC
@@ -124800,6 +124802,7 @@ SceneRoots:
   - {fileID: 777726728}
   - {fileID: 1125821524}
   - {fileID: 49451368}
+  - {fileID: 856024699}
   - {fileID: 659905670}
   - {fileID: 936705773}
   - {fileID: 865719647}

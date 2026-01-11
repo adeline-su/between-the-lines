@@ -6,19 +6,17 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public int InspirationLevel;
-
     private int CuriosityLevel = 0;
     private int SympathyLevel = 0;
     private int CynicismLevel = 0;
-
-    List<string> pastConversations = new List<string>();
-
     private bool hasTriggeredEndCutscene = false;
 
-    // public flags
+    // public fields
+    List<string> pastConversations = new List<string>();
+    public int InspirationLevel;
     public bool hasVisitedAtLeastOneLocation = false;
     public bool hasMetMC = false;
+    public GameObject currentlyHeldItem;
 
     private void Awake() {
         if (Instance != null) { // make sure there is only one GameManager at all times
@@ -104,6 +102,14 @@ public class GameManager : MonoBehaviour
     public void addToListOfPastConversations(GameObject npc) {
         pastConversations.Add(npc.name);
         Debug.Log("Added " + npc.name + " to list of pastConversations: " + string.Join(", ", pastConversations));
+    }
+
+    public void clearCurrentlyHeldItem() {
+        Debug.Log("GameManager, clearCurrentlyHeldItem");
+        if (currentlyHeldItem == null) return;
+        
+        Destroy(currentlyHeldItem.gameObject);
+        currentlyHeldItem = null;
     }
 
 }

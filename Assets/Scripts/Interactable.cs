@@ -29,31 +29,38 @@ public class Interactable : MonoBehaviour
     public void Highlight(bool isActive)
     {
         if ((gameObject.name != "MC") && !GameManager.Instance.hasMetMC) return;
-        // for objects with a Renderer on this GameObject
-        Debug.Log("trying to Highlight " + gameObject.name);
-        if (rend != null) {
-            Debug.Log("Interactable - Highlight for OBJECTS " + gameObject.name);
 
-            if (isActive) {
-                Debug.Log("Highlighted " + gameObject.name);
-                rend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_Highlight;
-            }
-            else {
-                rend.renderingLayerMask = renderingLayerMask_Default;
-            }
+        // Apply highlight to this object first
+        ApplyHighlightToRenderer(isActive, rend, skinnedRend);
+
+        // Now apply highlight to all children
+        var childRenderers = GetComponentsInChildren<Renderer>(includeInactive: false);
+        var childSkinnedRenderers = GetComponentsInChildren<SkinnedMeshRenderer>(includeInactive: false);
+
+        foreach (var r in childRenderers)
+            ApplyHighlightToRenderer(isActive, r, null);
+
+        foreach (var s in childSkinnedRenderers)
+            ApplyHighlightToRenderer(isActive, null, s);
+    }
+
+    private void ApplyHighlightToRenderer(bool isActive, Renderer r, SkinnedMeshRenderer s)
+    {
+        if (r != null)
+        {
+            r.renderingLayerMask = isActive
+                ? renderingLayerMask_Default | renderingLayerMask_Highlight
+                : renderingLayerMask_Default;
         }
-        // for characters with SkinnedMeshRenderer on a child
-        else if (skinnedRend != null) {
-            Debug.Log("Interactable - Highlight for CHARACTERS " + gameObject.name);
-            if (isActive) {
-                Debug.Log("Highlighted " + gameObject.name);
-                skinnedRend.renderingLayerMask = renderingLayerMask_Default | renderingLayerMask_Highlight;
-            }
-            else {
-                skinnedRend.renderingLayerMask = renderingLayerMask_Default;
-            }
+        else if (s != null)
+        {
+            s.renderingLayerMask = isActive
+                ? renderingLayerMask_Default | renderingLayerMask_Highlight
+                : renderingLayerMask_Default;
         }
     }
+
+
 
     public virtual void Interact()
     {

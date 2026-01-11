@@ -5041,10 +5041,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.15127353
+  m_Radius: 0.044766687
   m_Height: 1.0661852
   m_Direction: 1
-  m_Center: {x: 0, y: 0.49999997, z: 0}
+  m_Center: {x: 0.0058266525, y: 0.49999997, z: 0}
 --- !u!1 &457823155
 GameObject:
   m_ObjectHideFlags: 0
@@ -10830,6 +10830,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   playerCam: {fileID: 1809658772}
+  currentHighlighted: {fileID: 0}
 --- !u!143 &1268388447
 CharacterController:
   m_ObjectHideFlags: 0
@@ -10973,6 +10974,7 @@ MonoBehaviour:
   InspirationLevel: 0
   hasVisitedAtLeastOneLocation: 0
   hasMetMC: 0
+  currentlyHeldItem: {fileID: 0}
 --- !u!4 &1283217187
 Transform:
   m_ObjectHideFlags: 0
@@ -14936,8 +14938,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.649998, y: 2.3738482, z: 11.249996}
-  m_Center: {x: 6.704999, y: 1.1869241, z: 5.624998}
+  m_Size: {x: 5.649998, y: 8.284198, z: 11.249996}
+  m_Center: {x: 6.704999, y: 4.142099, z: 5.624998}
 --- !u!208 &1970136245
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -24760,7 +24762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016642, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016655, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Enabled

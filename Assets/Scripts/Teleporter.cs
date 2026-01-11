@@ -16,6 +16,9 @@ public class Teleporter : Interactable
         base.Interact();
         Debug.Log("Interact - Teleporter");
 
+        // destroy whatever item the player is holding
+        GameManager.Instance.clearCurrentlyHeldItem();
+
         // change location within the current scene, to desired position in the target scene
         if (targetLocation != null) { 
             Debug.Log("Teleporting!");
