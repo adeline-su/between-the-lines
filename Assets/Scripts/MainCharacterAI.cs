@@ -49,6 +49,8 @@ public class MainCharacterAI : Interactable
         {
             agent.SetDestination(patrolPoints[currentPointIndex].position);
         }
+
+        Debug.Log("Start MainCharacterAI, found player?" + player);
     }
 
     void Update()
