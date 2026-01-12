@@ -81,6 +81,7 @@ public class ScreenTransition : MonoBehaviour
             player.transform.position = GameManager.Instance.nextScenePosition;
             // GameManager.Instance.nextScenePosition = null;
             cc.enabled = true;
+            
 
             Debug.Log("Teleported to " + player.transform.position);
         }
@@ -90,6 +91,9 @@ public class ScreenTransition : MonoBehaviour
 
         // Hide images 
         destinationImage.enabled = false;
+        GameManager.Instance.hasVisitedAtLeastOneLocation = true;
+
+        GameManager.Instance.OnSceneLoaded(sceneName);
     }
 
 

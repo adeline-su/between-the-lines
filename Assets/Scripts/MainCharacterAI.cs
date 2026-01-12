@@ -34,6 +34,10 @@ public class MainCharacterAI : Interactable
     protected override void Start()
     {
         base.Start();
+        if (GameManager.Instance.InspirationLevel == 3) {
+            Debug.Log("deactivating the MC");
+            gameObject.SetActive(false);
+        }
         layerDefault = LayerMask.NameToLayer("Default");
         layerInteractable = LayerMask.NameToLayer("Interactable");
         playerInput = FindFirstObjectByType<PlayerInput>();

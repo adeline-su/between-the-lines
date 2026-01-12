@@ -17,7 +17,7 @@ public class TwoJournalCutscene : MonoBehaviour
     public float delayBeforeFirstJournal = 1f;
     public float firstJournalDuration = 8f;
     public float timeSecondJournalAppears = 8f;
-    public float secondJournalDuration = 17f;
+    public float secondJournalDuration = 17f;    
 
     bool isPlaying = false;
 

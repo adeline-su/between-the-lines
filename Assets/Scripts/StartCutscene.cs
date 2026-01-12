@@ -14,7 +14,7 @@ public class StartCutscene : MonoBehaviour
     public float secondJournalDuration;
     public float timeSecondJournalAppears;
 
-    private bool TESTING_skipStartCutscene = true;
+    private bool TESTING_skipStartCutscene = false;
 
     void Start()
     {
