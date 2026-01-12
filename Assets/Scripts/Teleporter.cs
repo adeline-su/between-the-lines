@@ -23,22 +23,31 @@ public class Teleporter : Interactable
         if (targetLocation != null) { 
             Debug.Log("Teleporting!");
             GameObject player = GameObject.FindWithTag("Player");
-            CharacterController cc = player.GetComponent<CharacterController>();
-            
-            cc.enabled = false;
-            player.transform.position = targetLocation.position;
-            player.transform.rotation = Quaternion.LookRotation(Vector3.forward); // north
-            cc.enabled = true;
+            GameManager.Instance.nextScenePosition = targetLocation.position;
 
-            Debug.Log("Teleported to " + player.transform.position);
+            // CharacterController cc = player.GetComponent<CharacterController>();
+            
+            // cc.enabled = false;
+            // player.transform.position = targetLocation.position;
+            // player.transform.rotation = Quaternion.LookRotation(Vector3.forward); // north
+            // cc.enabled = true;
+
+            // Debug.Log("Teleported to " + player.transform.position);
             GameManager.Instance.OnSceneLoaded(targetScene);
             GameManager.Instance.hasVisitedAtLeastOneLocation = true;
         }
 
-        // change scene
-        if (!string.IsNullOrEmpty(targetScene)) { 
-            SceneManager.LoadScene(targetScene);
+        // // change scene using fade transition
+        if (!string.IsNullOrEmpty(targetScene))
+        { 
+            // call the singleton ScreenTransition
+            if (ScreenTransition.Instance != null) {
+                ScreenTransition.Instance.FadeToScene(targetScene);
+            } else { 
+                SceneManager.LoadScene(targetScene);
+            }
         }
-    }
+        // SceneManager.LoadScene(targetScene);
 
+    }
 }

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private int SympathyLevel = 0;
     private int CynicismLevel = 0;
     private bool hasTriggeredEndCutscene = false;
+    public Vector3 nextScenePosition = Vector3.zero;
 
     // public fields
     List<string> pastConversations = new List<string>();
@@ -107,7 +108,7 @@ public class GameManager : MonoBehaviour
     public void clearCurrentlyHeldItem() {
         Debug.Log("GameManager, clearCurrentlyHeldItem");
         if (currentlyHeldItem == null) return;
-        
+
         Destroy(currentlyHeldItem.gameObject);
         currentlyHeldItem = null;
     }
